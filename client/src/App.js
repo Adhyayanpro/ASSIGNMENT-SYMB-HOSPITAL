@@ -3,6 +3,7 @@ import './App.css';
 import AddDoctor from './components/AddDoctor';
 import DoctorList from './components/DoctorList';
 import BookAppointment from './components/BookAppointment';
+import { apiFetch } from './api';
 
 function App() {
   const [doctors, setDoctors] = useState([]);
@@ -14,7 +15,7 @@ function App() {
 
   const fetchDoctors = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/doctors/all');
+      const response = await apiFetch('/api/doctors/all');
       const data = await response.json();
       setDoctors(data);
     } catch (error) {

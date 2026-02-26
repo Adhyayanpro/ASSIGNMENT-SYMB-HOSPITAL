@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { apiFetch } from '../api';
 
 const DoctorList = ({ refresh }) => {
   const [doctors, setDoctors] = useState([]);
@@ -11,7 +12,7 @@ const DoctorList = ({ refresh }) => {
   const fetchDoctors = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/doctors/all');
+      const response = await apiFetch('/api/doctors/all');
       const data = await response.json();
       setDoctors(data);
     } catch (error) {

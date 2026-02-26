@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiFetch } from '../api';
 
 const BookAppointment = ({ doctors, onAppointmentBooked }) => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const BookAppointment = ({ doctors, onAppointmentBooked }) => {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:5000/api/appointments/book', {
+      const response = await apiFetch('/api/appointments/book', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
